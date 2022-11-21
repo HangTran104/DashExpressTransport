@@ -155,7 +155,8 @@ def create_full_charts(data_frame, labels):
 
   sns.despine(top=True, bottom=False, right=True, left=False)
   plt.tight_layout()
-  plt.show()
+  return fig
+  
 
 
 
