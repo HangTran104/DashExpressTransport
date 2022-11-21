@@ -7,7 +7,7 @@ import matplotlib.gridspec as gc
 
 def load_dataset():
   uploaded_file = st.file_uploader("Choose a file")
-  data  = pd.read_excel(uploaded_file)
+  data  = read_excel(uploaded_file)
   return data
 
 def data_cleaner(df):
