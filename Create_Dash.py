@@ -177,6 +177,7 @@ if __name__ == '__main__':
     submit = st.button('Submit')
 
     data = data[data['Trạng Thái'].isin(status)]
+    data = data_cleaner(data)
     st.subheader('Load DataFrame: ')
     st.dataframe(data.head())
     st.subheader('Data Description:')
