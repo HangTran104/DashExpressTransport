@@ -163,7 +163,6 @@ def create_full_charts(data_frame, labels):
 
   sns.despine(top=True, bottom=False, right=True, left=False)
   plt.tight_layout()
-  st.pyplot(fig)
   
 
 
@@ -194,7 +193,7 @@ if __name__ == '__main__':
     st.subheader('Now let view the summary dashboard: ')
     st.write(list(data['Trạng Thái'].unique()))
 #     pyplot(create_full_charts(data_frame=data, labels=data['Trạng Thái'].unique()))
-    create_full_charts(data_frame=data, labels=data['Trạng Thái'].unique())
+    st.pyplot(create_full_charts(data_frame=data, labels=data['Trạng Thái'].unique()))
     
 
 
