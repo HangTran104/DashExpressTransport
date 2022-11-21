@@ -246,7 +246,7 @@ if __name__ == '__main__':
       KL = ('Khối Lượng', 'sum')
       ).reset_index().sort_values(by='revenue', ascending=False)
     ax4 = fig.add_subplot(spec[2,0])
-    ax4.pie(data_frame['status_'].value_counts(), labels=labels, autopct='%.1f%%', shadow=True, textprops={"color":'k', 'fontsize':20, "fontweight":'bold'}, explode=[i*0.1 for i in range(len(labels))], radius=0.7, startangle=90)
+    ax4.pie(data_frame['status_'].value_counts(), labels=data_frame['status_'].value_counts().index, autopct='%.1f%%', shadow=True, textprops={"color":'k', 'fontsize':20, "fontweight":'bold'}, explode=[i*0.1 for i in range(len(data_frame['status_'].value_counts().index))], radius=0.7, startangle=90)
 
     ax41 = fig.add_subplot(spec[2,1])
     sns.barplot(data=sum_by_status, x='Trạng Thái', y='revenue', estimator=sum, ci=0, ax=ax41, palette='Blues_r')
