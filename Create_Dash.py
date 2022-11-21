@@ -172,7 +172,7 @@ if __name__ == '__main__':
     data = load_dataset()
     
     st.subheader('Choose the status: ')
-    status = st.sidebar.multiselect('Option of Status: ', options=data['Trạng Thái'].unique())
+    status = st.multiselect('Option of Status: ', options=data['Trạng Thái'].unique())
     submit = st.button('Submit')
 
     data = data[data['Trạng Thái'].isin(status)]
