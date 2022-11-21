@@ -121,7 +121,7 @@ def create_full_charts(data_frame, labels):
   ax5 = fig.add_subplot(spec[3, :])
   sns.lineplot(data=data_frame.sort_values(by='month'), x='month', y='Actual', estimator=sum, marker='o', color='orange', hue='Vendor_code',ax=ax5)
   ax5.set_xticks(arange(0,12))
-  ax5.set_xticklabels(labels=data_frame['month'].sort_values(by='month').unique(), fontsize=20)
+  ax5.set_xticklabels(labels=data_frame['month'].sort_values().unique(), fontsize=20)
   ax5.set_yticks(arange(0,7000000,1000000))
   ax5.set_yticklabels(labels=[str(i/1000000)+'M' for i in arange(0,7000000,1000000)], fontsize=20)
 
