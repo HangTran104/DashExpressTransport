@@ -75,7 +75,7 @@ def create_full_charts(data_frame, labels):
 
 
   ax3=fig.add_subplot(spec[1,2])
-  sns.barplot(data=sum_by_vendor, x='Vendor_code', y='count_orders', estimator='sum', ci=0, ax=ax3, palette='Blues_r')
+  sns.barplot(data=sum_by_vendor, x='Vendor_code', y='count_orders', estimator=np.sum, ci=0, ax=ax3, palette='Blues_r')
   ax3.set_xticklabels(sum_by_vendor['Vendor_code'].unique(),rotation=90, fontsize=20)
   # ax3.set_yticklabels(fontsize=20)
   ax3.set_title("Volume by Account and Vendor", fontsize=24, fontweight='bold')
