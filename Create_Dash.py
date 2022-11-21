@@ -177,22 +177,22 @@ if __name__ == '__main__':
     st.subheader("Business Introduction")
   elif choice=='DashBoardDemo':
     st.subheader('Demo Dashboard Of Revenue')
-    data = load_dataset()
+    data_frame = load_dataset()
     
     st.subheader('Choose the status: ')
-    status = st.multiselect('Option of Status: ', options=data['Trạng Thái'].unique())
+    status = st.multiselect('Option of Status: ', options=data_frame['Trạng Thái'].unique())
     submit = st.button('Submit')
 
-    data = data[data['Trạng Thái'].isin(status)]
-    data = data_cleaner(data)
+    data_frame = data_frame[data_frame['Trạng Thái'].isin(status)]
+    data_frame = data_cleaner(data_frame)
     st.subheader('Load DataFrame: ')
-    st.dataframe(data.head())
+    st.dataframe(data_frame.head())
     st.subheader('Data Description:')
-    st.dataframe(dataset_survey(data))
+    st.dataframe(dataset_survey(data_frame))
 
     st.subheader('Now let view the summary dashboard: ')
-    st.write(list(data['Trạng Thái'].unique()))
-#     pyplot(create_full_charts(data_frame=data, labels=data['Trạng Thái'].unique()))
+    st.write(list(data_frame['Trạng Thái'].unique()))
+#     pyplot(create_full_charts(data_frame=data_frame, labels=data['Trạng Thái'].unique()))
 #     st.pyplot(create_full_charts(data_frame=data, labels=data['Trạng Thái'].unique()))
     fig = plt.figure(figsize=(50,96))
     spec = gc.GridSpec(nrows=6, ncols = 3)
