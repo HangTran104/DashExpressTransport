@@ -6,8 +6,8 @@ from numpy import *
 import matplotlib.gridspec as gc
 
 def load_dataset():
-  uploaded_file = st.file_uploader("Choose a file", engine='openpyxl')
-  data  = read_excel(uploaded_file)
+  uploaded_file = st.file_uploader("Choose a file")
+  data  = read_excel(uploaded_file, engine='openpyxl')
   return data
 
 def data_cleaner(df):
