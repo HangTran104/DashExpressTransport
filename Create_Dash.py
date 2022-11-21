@@ -1,5 +1,4 @@
 import streamlit as st
-from plotly.express import *
 import matplotlib.pyplot as plt
 import seaborn as sns
 from pandas import *
