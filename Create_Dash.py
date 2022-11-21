@@ -65,7 +65,7 @@ def create_full_charts(data_frame, labels):
       KL = ('Khối Lượng', 'sum')
   ).reset_index().sort_values(by='revenue', ascending=False)
   ax2=fig.add_subplot(spec[1,1])
-  sns.barplot(data=sum_by_vendor, x='Vendor_code', y='revenue', estimator='sum', ci=0, ax=ax2, palette='Blues_r')
+  sns.barplot(data=sum_by_vendor, x='Vendor_code', y='revenue', estimator=np.sum, ci=0, ax=ax2, palette='Blues_r')
   ax2.set_xticklabels(sum_by_vendor['Vendor_code'].unique(),rotation=90, fontsize=20)
   ax2.set_yticks(arange(0,15000000,2000000))
   ax2.set_yticklabels(labels=[str(i/1000000)+'M' for i in arange(0,15000000,2000000)], fontsize=20)
