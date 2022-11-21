@@ -177,12 +177,12 @@ if __name__ == '__main__':
 
     data = data[data['Trạng Thái'].isin(status)]
     st.subheader('Load DataFrame: ')
-    data.head()
+    st.dataframe(data.head())
     st.subheader('Data Description:')
-    dataset_survey(data)
+    st.dataframe(dataset_survey(data))
 
     st.subheader('Now let view the summary dashboard: ')
-    create_full_charts(df=data, labels=data['Trạng Thái'].unique())
+    create_full_charts(df=data, labels=data['Trạng Thái'].unique().to_list())
 
 
 
