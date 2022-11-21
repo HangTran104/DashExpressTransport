@@ -194,7 +194,7 @@ if __name__ == '__main__':
     st.write(list(data_frame['Trạng Thái'].unique()))
 #     pyplot(create_full_charts(data_frame=data_frame, labels=data['Trạng Thái'].unique()))
 #     st.pyplot(create_full_charts(data_frame=data, labels=data['Trạng Thái'].unique()))
-    fig = plt.figure(figsize=(45,90))
+    fig = plt.figure(figsize=(40,96))
     spec = gc.GridSpec(nrows=6, ncols = 3)
 
 
