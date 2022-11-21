@@ -102,7 +102,7 @@ def create_full_charts(data_frame, labels):
   ax41.set_xlabel('Status', fontsize=20, fontweight='bold')
 
   ax42 = fig.add_subplot(spec[2,2])
-  sns.barplot(data=sum_by_status, x='Trạng Thái', y='count_orders', estimator='sum', ci=0, ax=ax42, palette='Blues_r')
+  sns.barplot(data=sum_by_status, x='Trạng Thái', y='count_orders', estimator=np.sum, ci=0, ax=ax42, palette='Blues_r')
   ax42.set_xticklabels(sum_by_status['Trạng Thái'].unique(),rotation=90, fontsize=20)
   # ax42.set_yticklabels(fontsize=20)
   ax42.set_title("Volume by Status", fontsize=24, fontweight='bold')
