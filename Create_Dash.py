@@ -46,7 +46,7 @@ def  dataset_survey(data):
 
 
 def create_full_charts(data_frame, labels): 
-  fig = plt.figure(figsize=(50,96))
+  fig = plt.figure(figsize=(40,90), dpi=300)
   spec = gc.GridSpec(nrows=6, ncols = 3)
 
 
