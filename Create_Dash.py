@@ -182,7 +182,7 @@ if __name__ == '__main__':
     st.dataframe(dataset_survey(data))
 
     st.subheader('Now let view the summary dashboard: ')
-    create_full_charts(df=data, labels=data['Trạng Thái'].unique().to_list())
+    pyplot(create_full_charts(df=data, labels=data['Trạng Thái'].unique().to_list()))
 
 
 
