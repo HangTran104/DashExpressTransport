@@ -21,6 +21,14 @@ def data_cleaner(df):
   df['Tên Shop']=df['Tên Shop'].str.replace('(\d+\W+)', '', regex=True)
   df['month'] = df['Thời Gian Tạo'].apply(lambda x: str(x)[:7])
   df = df[df['Actual']>0]
+  df['status_'] = df['Trạng Thái']
+  df['status_'] = df['status_'].str.replace('Đã Trả Hàng Toàn Bộ','Trả hàng')
+  df['status_'] = df['status_'].str.replace('Đã Trả Hàng Một Phần','Trả hàng')
+  df['status_'] = df['status_'].str.replace('Đang Chuyển Kho Trả','Trả hàng')
+  df['status_'] = df['status_'].str.replace('Đang Chuyển Kho Giao','Đang Thực hiện')
+  df['status_'] = df['status_'].str.replace('Đang Giao Hàng','Đang Thực hiện')
+  df['status_'] = df['status_'].str.replace('Đang Vận Chuyển','Đang Thực hiện')
+  df['status_'] = df['status_'].str.replace('Xác Nhận Hoàn','Trả hàng')
   return df
 
 
@@ -90,7 +98,7 @@ def create_full_charts(data_frame, labels):
     KL = ('Khối Lượng', 'sum')
     ).reset_index().sort_values(by='revenue', ascending=False)
   ax4 = fig.add_subplot(spec[2,0])
-  ax4.pie(data_frame['status'].value_counts(), labels=labels, autopct='%.1f%%', shadow=True, textprops={"color":'k', 'fontsize':20, "fontweight":'bold'}, explode=[i*0.1 for i in range(len(labels))], radius=0.7, startangle=90)
+  ax4.pie(data_frame['status_'].value_counts(), labels=labels, autopct='%.1f%%', shadow=True, textprops={"color":'k', 'fontsize':20, "fontweight":'bold'}, explode=[i*0.1 for i in range(len(labels))], radius=0.7, startangle=90)
 
   ax41 = fig.add_subplot(spec[2,1])
   sns.barplot(data=sum_by_status, x='Trạng Thái', y='revenue', estimator=sum, ci=0, ax=ax41, palette='Blues_r')
