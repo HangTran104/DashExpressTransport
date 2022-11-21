@@ -65,7 +65,7 @@ def create_full_charts(data_frame, labels):
       KL = ('Khối Lượng', 'sum')
   ).reset_index().sort_values(by='revenue', ascending=False)
   ax2=fig.add_subplot(spec[1,1])
-  sns.barplot(data=sum_by_vendor, x='Vendor_code', y='revenue', estimator=np.sum, ci=0, ax=ax2, palette='Blues_r')
+  sns.barplot(data=sum_by_vendor, x='Vendor_code', y='revenue', estimator=sum, ci=0, ax=ax2, palette='Blues_r')
   ax2.set_xticklabels(sum_by_vendor['Vendor_code'].unique(),rotation=90, fontsize=20)
   ax2.set_yticks(arange(0,15000000,2000000))
   ax2.set_yticklabels(labels=[str(i/1000000)+'M' for i in arange(0,15000000,2000000)], fontsize=20)
@@ -75,7 +75,7 @@ def create_full_charts(data_frame, labels):
 
 
   ax3=fig.add_subplot(spec[1,2])
-  sns.barplot(data=sum_by_vendor, x='Vendor_code', y='count_orders', estimator=np.sum, ci=0, ax=ax3, palette='Blues_r')
+  sns.barplot(data=sum_by_vendor, x='Vendor_code', y='count_orders', estimator=sum, ci=0, ax=ax3, palette='Blues_r')
   ax3.set_xticklabels(sum_by_vendor['Vendor_code'].unique(),rotation=90, fontsize=20)
   # ax3.set_yticklabels(fontsize=20)
   ax3.set_title("Volume by Account and Vendor", fontsize=24, fontweight='bold')
@@ -93,7 +93,7 @@ def create_full_charts(data_frame, labels):
   ax4.pie(data_frame['status'].value_counts(), labels=labels, autopct='%.1f%%', shadow=True, textprops={"color":'k', 'fontsize':20, "fontweight":'bold'}, explode=[i*0.1 for i in range(len(labels))], radius=0.7, startangle=90)
 
   ax41 = fig.add_subplot(spec[2,1])
-  sns.barplot(data=sum_by_status, x='Trạng Thái', y='revenue', estimator='sum', ci=0, ax=ax41, palette='Blues_r')
+  sns.barplot(data=sum_by_status, x='Trạng Thái', y='revenue', estimator=sum, ci=0, ax=ax41, palette='Blues_r')
   ax41.set_xticklabels(sum_by_status['Trạng Thái'].unique(),rotation=90, fontsize=20)
   ax41.set_yticks(arange(0,14000000,2000000))
   ax41.set_yticklabels(labels=[str(i/1000000)+'M' for i in arange(0,14000000,2000000)], fontsize=20)
@@ -102,7 +102,7 @@ def create_full_charts(data_frame, labels):
   ax41.set_xlabel('Status', fontsize=20, fontweight='bold')
 
   ax42 = fig.add_subplot(spec[2,2])
-  sns.barplot(data=sum_by_status, x='Trạng Thái', y='count_orders', estimator=np.sum, ci=0, ax=ax42, palette='Blues_r')
+  sns.barplot(data=sum_by_status, x='Trạng Thái', y='count_orders', estimator=sum, ci=0, ax=ax42, palette='Blues_r')
   ax42.set_xticklabels(sum_by_status['Trạng Thái'].unique(),rotation=90, fontsize=20)
   # ax42.set_yticklabels(fontsize=20)
   ax42.set_title("Volume by Status", fontsize=24, fontweight='bold')
@@ -111,7 +111,7 @@ def create_full_charts(data_frame, labels):
 
 
   ax5 = fig.add_subplot(spec[3, :])
-  sns.lineplot(data=data_frame.sort_values(by='month'), x='month', y='Actual', estimator='sum', marker='o', color='orange', hue='Vendor_code',ax=ax5)
+  sns.lineplot(data=data_frame.sort_values(by='month'), x='month', y='Actual', estimator=sum, marker='o', color='orange', hue='Vendor_code',ax=ax5)
   ax5.set_xticks(arange(0,12))
   ax5.set_xticklabels(labels=data_frame['month'].unique()[[11, 10,9,8,7,6,5,4,3,2,0,1]], fontsize=20)
   ax5.set_yticks(arange(0,7000000,1000000))
@@ -125,7 +125,7 @@ def create_full_charts(data_frame, labels):
 
   # Province
   ax6 = fig.add_subplot(spec[4,:])
-  sns.barplot(data=sum_by_vendor.groupby('tinh').sum().reset_index()[['tinh', 'revenue']].sort_values(by='revenue',ascending=False), x='tinh', y='revenue', palette='Blues_r', estimator='sum', ax=ax6)
+  sns.barplot(data=sum_by_vendor.groupby('tinh').sum().reset_index()[['tinh', 'revenue']].sort_values(by='revenue',ascending=False), x='tinh', y='revenue', palette='Blues_r', estimator=sum, ax=ax6)
   ax6.set_xticklabels(sum_by_vendor.groupby('tinh').sum().reset_index()[['tinh', 'revenue']].sort_values(by='revenue',ascending=False)['tinh'].unique(),rotation=90, fontsize=20)
   ax6.set_yticks(arange(0,3000000,500000))
   ax6.set_yticklabels(labels=[str(i/1000000)+'M' for i in arange(0,3000000,500000)], fontsize=20)
@@ -145,7 +145,7 @@ def create_full_charts(data_frame, labels):
   ).reset_index().sort_values(by='revenue', ascending=False)
 
   ## Plot
-  sns.barplot(data=sum_by_shopcode, x='tenshop', y='revenue', palette='Blues_r', estimator='sum', ax=ax7)
+  sns.barplot(data=sum_by_shopcode, x='tenshop', y='revenue', palette='Blues_r', estimator=sum, ax=ax7)
   ax7.set_xticklabels(sum_by_shopcode['tenshop'].unique(),rotation=90, fontsize=20)
   ax7.set_yticks(arange(0,3000000,500000))
   ax7.set_yticklabels(labels=[str(i/1000000)+'M' for i in arange(0,3000000,500000)], fontsize=20)
