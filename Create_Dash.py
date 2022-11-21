@@ -184,7 +184,7 @@ if __name__ == '__main__':
 
     st.subheader('Now let view the summary dashboard: ')
     st.write(list(data['Trạng Thái'].unique()))
-    pyplot(create_full_charts(df=data, labels=status))
+    pyplot(create_full_charts(df=data, labels=list(data['Trạng Thái'].unique())))
 
 
 
