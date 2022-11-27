@@ -59,7 +59,7 @@ if __name__ == '__main__':
     status = st.multiselect('Option of Status: ', options=df['Trạng Thái'].unique())
     submit = st.button('Submit')
 
-    df = data_frame[df['Trạng Thái'].isin(status)]
+    df = df[df['Trạng Thái'].isin(status)]
     df = data_cleaner(df)
     st.subheader('Load DataFrame: ')
     st.dataframe(df.head())
