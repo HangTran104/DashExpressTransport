@@ -59,8 +59,8 @@ if __name__ == '__main__':
     st.subheader('Choose the status: ')
     status = st.multiselect('Option of Status: ', options=df['Trạng Thái'].unique())
     submit = st.button('Submit')
-    min_date = df['Thời Gian Tạo'].min()
-    max_date = df['Thời Gian Tạo'].max()
+    min_date = df['Thời Gian Tạo'].min().date()
+    max_date = df['Thời Gian Tạo'].max().date()
 
     a_date = st.date_input("Pick a date", (min_date,max_date))
 
