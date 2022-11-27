@@ -64,7 +64,7 @@ if __name__ == '__main__':
 
     a_date = st.date_input("Pick a date", (min_date,max_date))
 
-    df = df[(df['Trạng Thái'].isin(status))&((df['date'] a_date[0]) & (df['date'] < a_date[1]))]
+    df = df[(df['Trạng Thái'].isin(status))&((df['date'] >a_date[0]) & (df['date'] < a_date[1]))]
     df = data_cleaner(df)
     st.subheader('Load DataFrame: ')
     st.dataframe(df.head())
