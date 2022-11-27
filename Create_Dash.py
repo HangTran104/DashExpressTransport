@@ -164,7 +164,7 @@ if __name__ == '__main__':
     # Revenue overtime
     fig3=plt.figure(figsize=(20,8))
     sns.lineplot(data=df.sort_values(by='month'), x='month', y='Actual', estimator=sum, marker='o', color='orange', hue='Vendor_code')
-    plt.xticks(df.sort_values(by='month').unique(), fontsize=18)
+    plt.xticks(df['month'].unique(), fontsize=18)
     plt.yticks(arange(0,7000000,1000000),[str(i/1000000)+'M' for i in arange(0,7000000,1000000)], fontsize=18)
     sns.despine(top=True, bottom=True, right=True, left=True)
     plt.title("Revenue over time by vendor", fontsize=20, fontweight='bold')
