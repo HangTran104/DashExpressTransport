@@ -68,12 +68,19 @@ if __name__ == '__main__':
 
     st.subheader('Now let view the summary dashboard: ')
     st.write(list(df['Trạng Thái'].unique()))
-#     pyplot(create_full_charts(data_frame=data_frame, labels=data['Trạng Thái'].unique()))
-#     st.pyplot(create_full_charts(data_frame=data_frame, labels=data_frame['Trạng Thái'].unique()))
-    fig = plt.figure(figsize=(40,96))
-    spec = gc.GridSpec(nrows=6, ncols = 3)
-
-
+    
+    # Summarize text
+    fig0=plt.figure(figsize=(20,8))
+    ax11 = plt.subplot(121)
+    ax11.text(0.4,0.4, 'Total Amount', fontsize=45, fontweight='bold')
+    ax11.text(0.5,0.3, '{0:,.2f}M'.format(df['Actual'].sum().round(2)/1000000), fontsize=40, fontweight='regular')
+    plt.axis('off')
+    ax12 = plt.subplot(122)
+    ax12.text(0.4,0.4, 'Total Volume', fontsize=45, fontweight='bold')
+    ax12.text(0.5,0.3, '{0:,.0f}'.format(df['Actual'].count().round(2)), fontsize=40, fontweight='regular')
+    plt.axis('off')
+    st.pyplot(fig0)
+  
     # Summarize text
     st.subheader('Revenue by Vendor')
     
