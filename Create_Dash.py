@@ -126,7 +126,7 @@ if __name__ == '__main__':
     count_orders = ('Tên Shop', 'count'),
     KL = ('Khối Lượng', 'sum')
       ).reset_index().sort_values(by='revenue', ascending=False)
-    fig2=plt.figure(figsize=(10,30))
+    fig2=plt.figure(figsize=(30,10))
     ax4 = plt.subplot(131)
     ax4.pie(sum_by_status['Trạng Thái'].value_counts(), labels=sum_by_status['Trạng Thái'].value_counts().index, autopct='%.1f%%', shadow=True, textprops={"color":'k', 'fontsize':20, "fontweight":'bold'}, explode=[i*0.1 for i in range(len(sum_by_status['Trạng Thái'].value_counts().index))], radius=2.2, startangle=90)
 
@@ -150,7 +150,7 @@ if __name__ == '__main__':
     # Revenue overtime
     fig3=plt.figure(figsize=(20,8))
     sns.lineplot(data=df.sort_values(by='month'), x='month', y='Actual', estimator=sum, marker='o', color='orange', hue='Vendor_code')
-    plt.xticks(arange(0,12),df['month'].unique()[[11, 10,9,8,7,6,5,4,3,2,0,1]], fontsize=18)
+    plt.xticks(arange(0,12),df.sort_values(by='month')['month'].unique(), fontsize=18)
     plt.yticks(arange(0,7000000,1000000),[str(i/1000000)+'M' for i in arange(0,7000000,1000000)], fontsize=18)
     sns.despine(top=True, bottom=True, right=True, left=True)
     plt.title("Revenue over time by vendor", fontsize=20, fontweight='bold')
