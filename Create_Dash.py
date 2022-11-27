@@ -128,7 +128,7 @@ if __name__ == '__main__':
       ).reset_index().sort_values(by='revenue', ascending=False)
     fig2=plt.figure(figsize=(10,30))
     ax4 = plt.subplot(131)
-    ax4.pie(sum_by_status['Trạng Thái'].value_counts(), labels=sum_by_status['Trạng Thái'].value_counts().index, autopct='%.1f%%', shadow=True, textprops={"color":'k', 'fontsize':20, "fontweight":'bold'}, explode=[i*0.1 for i in len(sum_by_status['Trạng Thái'].value_counts().index], radius=2.2, startangle=90)
+    ax4.pie(sum_by_status['Trạng Thái'].value_counts(), labels=sum_by_status['Trạng Thái'].value_counts().index, autopct='%.1f%%', shadow=True, textprops={"color":'k', 'fontsize':20, "fontweight":'bold'}, explode=[i*0.1 for i in range(len(sum_by_status['Trạng Thái'].value_counts().index))], radius=2.2, startangle=90)
 
     ax41 = plt.subplot(132)
     sns.barplot(data=sum_by_status, x='Trạng Thái', y='revenue', estimator=sum, ci=0, ax=ax41, palette='Blues_r')
