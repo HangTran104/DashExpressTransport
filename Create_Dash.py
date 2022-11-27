@@ -53,21 +53,21 @@ if __name__ == '__main__':
     st.subheader("Business Introduction")
   elif choice=='DashBoardDemo':
     st.subheader('Demo Dashboard Of Revenue')
-    data_frame = load_dataset()
+    df = load_dataset()
     
     st.subheader('Choose the status: ')
-    status = st.multiselect('Option of Status: ', options=data_frame['Trạng Thái'].unique())
+    status = st.multiselect('Option of Status: ', options=df['Trạng Thái'].unique())
     submit = st.button('Submit')
 
-    data_frame = data_frame[data_frame['Trạng Thái'].isin(status)]
-    data_frame = data_cleaner(data_frame)
+    df = data_frame[df['Trạng Thái'].isin(status)]
+    df = data_cleaner(df)
     st.subheader('Load DataFrame: ')
-    st.dataframe(data_frame.head())
+    st.dataframe(df.head())
     st.subheader('Data Description:')
-    st.dataframe(dataset_survey(data_frame))
+    st.dataframe(dataset_survey(df))
 
     st.subheader('Now let view the summary dashboard: ')
-    st.write(list(data_frame['Trạng Thái'].unique()))
+    st.write(list(df['Trạng Thái'].unique()))
 #     pyplot(create_full_charts(data_frame=data_frame, labels=data['Trạng Thái'].unique()))
 #     st.pyplot(create_full_charts(data_frame=data_frame, labels=data_frame['Trạng Thái'].unique()))
     fig = plt.figure(figsize=(40,96))
