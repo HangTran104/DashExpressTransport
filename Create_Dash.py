@@ -200,7 +200,7 @@ if __name__ == '__main__':
     ## Plot
     f5=sns.barplot(data=sum_by_shopcode, x='tenshop', y='revenue', palette='Blues_r', estimator=sum)
     plt.xticks(rotation=90, fontsize=20)
-    plt.yticks(f5.get_yticks(),[str(i/1000000)+'M' for i in f5.get_yticks()])
+    plt.yticks(f5.get_yticks(),[str(i/1000000)+'M' for i in f5.get_yticks()], fontsize=20)
     # ax7.set_yticklabels(labels=[str(i/1000000)+'M' for i in arange(0,3000000,500000)], fontsize=20)
     plt.title("Revenue by Account", fontsize=20, fontweight='bold')
     plt.ylabel('Revenue', fontsize=18, fontweight='bold')
