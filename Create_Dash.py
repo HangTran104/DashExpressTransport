@@ -121,10 +121,14 @@ if __name__ == '__main__':
     st.write('Revenue by Status')
 
     # Status parts
+    sum_by_status = df.groupby(['Trạng Thái']).agg(
+    revenue = ('Actual', 'sum'),
+    count_orders = ('Tên Shop', 'count'),
+    KL = ('Khối Lượng', 'sum')
+      ).reset_index().sort_values(by='revenue', ascending=False)
     fig2=plt.figure(figsize=(10,30))
     ax4 = plt.subplot(131)
-    ax4.pie(df['status_'].value_counts(), labels=['Đã Đối Soát Giao Hàng', 'Đã Giao Hàng', 'Trả hàng', 'Đang Thực hiện',
-           '', '', ''], autopct='%.1f%%', shadow=True, textprops={"color":'k', 'fontsize':20, "fontweight":'bold'}, explode=[0,0,0,0,0,0.1,0.3], radius=2.2, startangle=90)
+    ax4.pie(sum_by_status['Trạng Thái'].value_counts(), labels=sum_by_status['Trạng Thái'].value_counts().index, autopct='%.1f%%', shadow=True, textprops={"color":'k', 'fontsize':20, "fontweight":'bold'}, explode=[0,0,0,0,0,0.1,0.3], radius=2.2, startangle=90)
 
     ax41 = plt.subplot(132)
     sns.barplot(data=sum_by_status, x='Trạng Thái', y='revenue', estimator=sum, ci=0, ax=ax41, palette='Blues_r')
