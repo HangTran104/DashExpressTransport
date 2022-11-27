@@ -59,8 +59,8 @@ if __name__ == '__main__':
     st.subheader('Choose the status: ')
     status = st.multiselect('Option of Status: ', options=df['Trạng Thái'].unique())
     submit = st.button('Submit')
-    date_start = st.date_input('Start date', datetime.date(2019,7,6))
-    date_end = st.date_input('Start date', datetime.date(2019,7,6))
+    date_start = st.date_input('Start date', datetime(2019,7,6))
+    date_end = st.date_input('Start date', datetime(2019,7,6))
 
     df = df[(df['Trạng Thái'].isin(status))(df[(df['date'] > date_start) & (df['date'] < date_end)])]
     df = data_cleaner(df)
