@@ -94,7 +94,7 @@ if __name__ == '__main__':
         KL = ('Khối Lượng', 'sum')
     ).reset_index().sort_values(by='revenue', ascending=False)
     ax2=plt.subplot(132)
-    sns.barplot(data=sum_by_vendor, x='Vendor_code', y='revenue', estimator='sum', ci=0, ax=ax2, palette='Blues_r')
+    sns.barplot(data=sum_by_vendor, x='Vendor_code', y='revenue', estimator=np.sum, ci=0, ax=ax2, palette='Blues_r')
     ax2.set_xticklabels(sum_by_vendor['Vendor_code'].unique(),rotation=90, fontsize=18)
     ax2.set_yticks(arange(0,15000000,2000000))
     ax2.set_yticklabels(labels=[str(i/1000000)+'M' for i in arange(0,15000000,2000000)], fontsize=18)
@@ -105,7 +105,7 @@ if __name__ == '__main__':
 
 
     ax3=plt.subplot(133)
-    sns.barplot(data=sum_by_vendor, x='Vendor_code', y='count_orders', estimator='sum', ci=0, ax=ax3, palette='Blues_r')
+    sns.barplot(data=sum_by_vendor, x='Vendor_code', y='count_orders', estimator=np.sum, ci=0, ax=ax3, palette='Blues_r')
     ax3.set_xticklabels(sum_by_vendor['Vendor_code'].unique(),rotation=90, fontsize=18)
     ax3.set_yticks(arange(0,15000000,2000000))
     ax3.set_yticklabels(labels=[str(i/1000000)+'M' for i in arange(0,15000000,2000000)], fontsize=14)
@@ -127,7 +127,7 @@ if __name__ == '__main__':
            '', '', ''], autopct='%.1f%%', shadow=True, textprops={"color":'k', 'fontsize':20, "fontweight":'bold'}, explode=[0,0,0,0,0,0.1,0.3], radius=2.2, startangle=90)
 
     ax41 = plt.subplot(132)
-    sns.barplot(data=sum_by_status, x='Trạng Thái', y='revenue', estimator='sum', ci=0, ax=ax41, palette='Blues_r')
+    sns.barplot(data=sum_by_status, x='Trạng Thái', y='revenue', estimator=np.sum, ci=0, ax=ax41, palette='Blues_r')
     ax41.set_xticklabels(sum_by_status['Trạng Thái'].unique(),rotation=90, fontsize=20)
     ax41.set_yticks(arange(0,14000000,2000000))
     ax41.set_yticklabels(labels=[str(i/1000000)+'M' for i in arange(0,14000000,2000000)], fontsize=20)
@@ -136,7 +136,7 @@ if __name__ == '__main__':
     ax41.set_xlabel('Status_', fontsize=20, fontweight='bold')
 
     ax42 = plt.subplot(133)
-    sns.barplot(data=sum_by_status, x='Trạng Thái', y='count_orders', estimator='sum', ci=0, ax=ax42, palette='Blues_r')
+    sns.barplot(data=sum_by_status, x='Trạng Thái', y='count_orders', estimator=np.sum, ci=0, ax=ax42, palette='Blues_r')
     ax42.set_xticklabels(sum_by_status['Trạng Thái'].unique(),rotation=90, fontsize=20)
     ax42.set_title("Volume by Account and Vendor", fontsize=24, fontweight='bold')
     ax42.set_ylabel('Number of Orders', fontsize=20, fontweight='bold')
@@ -145,7 +145,7 @@ if __name__ == '__main__':
 
     # Revenue overtime
     fig3=plt.figure(figsize=(20,8))
-    sns.lineplot(data=df.sort_values(by='month'), x='month', y='Actual', estimator='sum', marker='o', color='orange', hue='Vendor_code')
+    sns.lineplot(data=df.sort_values(by='month'), x='month', y='Actual', estimator=np.sum, marker='o', color='orange', hue='Vendor_code')
     plt.xticks(arange(0,12),df['month'].unique()[[11, 10,9,8,7,6,5,4,3,2,0,1]], fontsize=18)
     plt.yticks(arange(0,7000000,1000000),[str(i/1000000)+'M' for i in arange(0,7000000,1000000)], fontsize=18)
     sns.despine(top=True, bottom=True, right=True, left=True)
@@ -158,7 +158,7 @@ if __name__ == '__main__':
     
     # Province
     fig4=plt.figure(figsize=(30,10))
-    sns.barplot(data=sum_by_vendor.groupby('tinh').sum().reset_index()[['tinh', 'revenue']].sort_values(by='revenue',ascending=False), x='tinh', y='revenue', palette='Blues_r', estimator='sum')
+    sns.barplot(data=sum_by_vendor.groupby('tinh').sum().reset_index()[['tinh', 'revenue']].sort_values(by='revenue',ascending=False), x='tinh', y='revenue', palette='Blues_r', estimator=np.sum)
     plt.xticks(rotation=90, fontsize=18)
     plt.yticks(arange(0,3000000,500000),[str(i/1000000)+'M' for i in arange(0,3000000,500000)], fontsize=20)
     # plt.yticks(labels=[str(i/1000000)+'M' for i in arange(0,3000000,500000)], fontsize=20)
@@ -180,7 +180,7 @@ if __name__ == '__main__':
         KL = ('Khối Lượng', 'sum')
     ).reset_index().sort_values(by='revenue', ascending=False)
     ## Plot
-    sns.barplot(data=sum_by_shopcode, x='tenshop', y='revenue', palette='Blues_r', estimator='sum')
+    sns.barplot(data=sum_by_shopcode, x='tenshop', y='revenue', palette='Blues_r', estimator=np.sum)
     plt.xticks(rotation=90, fontsize=20)
     plt.yticks(arange(0,3000000,500000),[str(i/1000000)+'M' for i in arange(0,3000000,500000)])
     # ax7.set_yticklabels(labels=[str(i/1000000)+'M' for i in arange(0,3000000,500000)], fontsize=20)
