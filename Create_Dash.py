@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from pandas import *
 from numpy import *
-import matplotlib.gridspec as gc
+from datetime import datetime
 
 def load_dataset():
   uploaded_file = st.file_uploader("Choose a file")
@@ -20,6 +20,7 @@ def data_cleaner(df):
   df['Mã Shop'] = df['Tên Shop'].str.extract('(\d+)')
   df['Tên Shop']=df['Tên Shop'].str.replace('(\d+\W+)', '', regex=True)
   df['month'] = df['Thời Gian Tạo'].apply(lambda x: str(x)[:7])
+  df['date'] = df['Thời Gian Tạo'].dt.date
   df = df[df['Actual']>0]
   df['status_'] = df['Trạng Thái']
   df['status_'] = df['status_'].str.replace('Đã Trả Hàng Toàn Bộ','Trả hàng')
@@ -58,8 +59,10 @@ if __name__ == '__main__':
     st.subheader('Choose the status: ')
     status = st.multiselect('Option of Status: ', options=df['Trạng Thái'].unique())
     submit = st.button('Submit')
+    date_start = st.date_input('Start date', datetime.date(2019,7,6))
+    date_end = st.date_input('Start date', datetime.date(2019,7,6))
 
-    df = df[df['Trạng Thái'].isin(status)]
+    df = df[(df['Trạng Thái'].isin(status))(df[(df['date'] > date_start) & (df['date'] < date_end)])]
     df = data_cleaner(df)
     st.subheader('Load DataFrame: ')
     st.dataframe(df.head())
